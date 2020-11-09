@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9c283220-b99b-4e11-a0ec-750215964d85" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Decrypting_Ciphers/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Decrypting_Ciphers/main.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1j9ASCIHeSSldo2aBxowsQ02Bm5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../Documents and Settings" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Classification" type="PythonConfigurationType" factoryName="Python">
+      <module name="Machine  Learning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9c283220-b99b-4e11-a0ec-750215964d85" name="Default Changelist" comment="" />
+      <created>1603205930404</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603205930404</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1542" y="198" key="#Inspections" timestamp="1603209503301">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1542" y="198" key="#Inspections/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1603209503301" />
+    <state x="2992" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603236384930">
+      <screen x="2560" y="0" width="2560" height="1040" />
+    </state>
+    <state x="2992" y="326" key="#com.intellij.fileTypes.FileTypeChooser/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1603236384930" />
+    <state x="2980" y="282" key="FileChooserDialogImpl" timestamp="1604509081767">
+      <screen x="2560" y="0" width="2560" height="1040" />
+    </state>
+    <state x="2980" y="282" key="FileChooserDialogImpl/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1604509081767" />
+    <state width="624" height="279" key="GridCell.Tab.0.bottom" timestamp="1603244054438">
+      <screen x="2560" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1249" height="279" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1603211408829" />
+    <state width="624" height="279" key="GridCell.Tab.0.bottom/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1603244054438" />
+    <state width="624" height="279" key="GridCell.Tab.0.center" timestamp="1603244054437">
+      <screen x="2560" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1249" height="279" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1603211408829" />
+    <state width="624" height="279" key="GridCell.Tab.0.center/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1603244054437" />
+    <state width="624" height="279" key="GridCell.Tab.0.left" timestamp="1603244054437">
+      <screen x="2560" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1249" height="279" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1603211408828" />
+    <state width="624" height="279" key="GridCell.Tab.0.left/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1603244054437" />
+    <state width="624" height="279" key="GridCell.Tab.0.right" timestamp="1603244054437">
+      <screen x="2560" y="0" width="2560" height="1040" />
+    </state>
+    <state width="1249" height="279" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1603211408829" />
+    <state width="624" height="279" key="GridCell.Tab.0.right/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1603244054437" />
+    <state x="3977" y="164" key="SettingsEditor" timestamp="1603236569183">
+      <screen x="2560" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1417" y="164" key="SettingsEditor/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1603209043947" />
+    <state x="3977" y="164" key="SettingsEditor/2560.0.2560.1040/0.0.2560.1040@2560.0.2560.1040" timestamp="1603236569183" />
+    <state x="1689" y="393" width="612" height="282" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1603209003199">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1689" y="393" width="612" height="282" key="org.intellij.images.editor.actions.BackgroundImageDialog/2560.0.2560.1040/0.0.2560.1040@0.0.2560.1040" timestamp="1603209003199" />
+  </component>
+</project>
