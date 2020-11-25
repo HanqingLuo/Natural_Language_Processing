@@ -1,12 +1,3 @@
-# This code is for my NLP Udemy class, which can be found at:
-# https://deeplearningcourses.com/c/data-science-natural-language-processing-in-python
-# https://www.udemy.com/data-science-natural-language-processing-in-python
-# It is written in such a way that tells a story.
-# i.e. So you can follow a thought process of starting from a
-# simple idea, hitting an obstacle, overcoming it, etc.
-# i.e. It is not optimized for anything.
-
-# Author: http://lazyprogrammer.me
 from __future__ import print_function, division
 from future.utils import iteritems
 from builtins import range
@@ -34,13 +25,28 @@ stopwords = set(w.rstrip() for w in open('stopwords.txt'))
 
 # load the reviews
 # data courtesy of http://www.cs.jhu.edu/~mdredze/datasets/sentiment/index2.html
+'''
+Step0: Import Data
+data structure:
+    positive/negative reviews: [xxx,xxx,xxx,xxx,xxx]
+    xxx = individual erviews
+'''
 positive_reviews = BeautifulSoup(open('electronics/positive.review').read(), features="html5lib")
-positive_reviews = positive_reviews.findAll('review_text')
+positive_reviews = positive_reviews.findAll('review_text') #只读tag <review_text>
+# print(positive_reviews)
 
 negative_reviews = BeautifulSoup(open('electronics/negative.review').read(), features="html5lib")
 negative_reviews = negative_reviews.findAll('review_text')
+# print(negative_reviews)
 
+# shuffle positive reviews
+# cutoff extras, so positive and negative reviews are distribute into the same data size
+np.random.shuffle(positive_reviews)
+positive_reviews = positive_reviews[:len(negative_reviews)]
 
+'''
+Step1: Pre-processing data
+'''
 
 # first let's just try to tokenize the text using nltk's tokenizer
 # let's take the first review for example:
@@ -54,30 +60,34 @@ negative_reviews = negative_reviews.findAll('review_text')
 # so let's create a function that does all this pre-processing for us
 
 def my_tokenizer(s):
-    s = s.lower() # downcase
+    s = s.lower() # downcase entire string, so upper case string won't take extra space
     tokens = nltk.tokenize.word_tokenize(s) # split string into words (tokens)
-    tokens = [t for t in tokens if len(t) > 2] # remove short words, they're probably not useful
-    tokens = [wordnet_lemmatizer.lemmatize(t) for t in tokens] # put words into base form
+    tokens = [t for t in tokens if len(t) > 2] # remove short words (len<2), they're probably not useful
+    tokens = [wordnet_lemmatizer.lemmatize(t) for t in tokens] # put words into base form, ex: dogs -> dog, jumping -> jump
     tokens = [t for t in tokens if t not in stopwords] # remove stopwords
     return tokens
 
 
-# create a word-to-index map so that we can create our word-frequency vectors later
-# let's also save the tokenized versions so we don't have to tokenize again later
+# # create a word-to-index map so that we can create our word-frequency vectors later
+# # let's also save the tokenized versions so we don't have to tokenize again later
 word_index_map = {}
 current_index = 0
 positive_tokenized = []
 negative_tokenized = []
 orig_reviews = []
 
+
 for review in positive_reviews:
     orig_reviews.append(review.text)
     tokens = my_tokenizer(review.text)
     positive_tokenized.append(tokens)
     for token in tokens:
-        if token not in word_index_map:
-            word_index_map[token] = current_index
+        if token not in word_index_map: # if token not in index_map
+            word_index_map[token] = current_index # then add it
             current_index += 1
+
+print('positive tokenized length:', len(positive_tokenized))
+print('positive tokenized', positive_tokenized)
 
 for review in negative_reviews:
     orig_reviews.append(review.text)
@@ -88,9 +98,14 @@ for review in negative_reviews:
             word_index_map[token] = current_index
             current_index += 1
 
+print('negative tokenized length:', len(negative_tokenized))
+
+# print(word_index_map)
+# print(positive_tokenized)
+# print(negative_tokenized)
 print("len(word_index_map):", len(word_index_map))
 
-# now let's create our input matrices
+# # now let's create our input matrices
 def tokens_to_vector(tokens, label):
     x = np.zeros(len(word_index_map) + 1) # last element is for the label
     for t in tokens:
@@ -105,12 +120,12 @@ N = len(positive_tokenized) + len(negative_tokenized)
 data = np.zeros((N, len(word_index_map) + 1))
 i = 0
 for tokens in positive_tokenized:
-    xy = tokens_to_vector(tokens, 1)
+    xy = tokens_to_vector(tokens, 1) # 1 = label, positive reviews
     data[i,:] = xy
     i += 1
 
 for tokens in negative_tokenized:
-    xy = tokens_to_vector(tokens, 0)
+    xy = tokens_to_vector(tokens, 0) # 0 = label, negative reviews
     data[i,:] = xy
     i += 1
 
@@ -118,7 +133,7 @@ for tokens in negative_tokenized:
 # try it multiple times!
 orig_reviews, data = shuffle(orig_reviews, data)
 
-X = data[:,:-1]
+X = data[:,:-1] # all rows, except the last column
 Y = data[:,-1]
 
 # last 100 rows will be test
@@ -136,39 +151,39 @@ print("Test accuracy:", model.score(Xtest, Ytest))
 # let's look at the weights for each word
 # try it with different threshold values!
 threshold = 0.5
-for word, index in iteritems(word_index_map):
-    weight = model.coef_[0][index]
-    if weight > threshold or weight < -threshold:
-        print(word, weight)
+# for word, index in iteritems(word_index_map):
+#     weight = model.coef_[0][index]
+#     if weight > threshold or weight < -threshold:
+#         print(word, weight)
 
 
-# check misclassified examples
-preds = model.predict(X)
-P = model.predict_proba(X)[:,1] # p(y = 1 | x)
+# # check misclassified examples
+# preds = model.predict(X)
+# P = model.predict_proba(X)[:,1] # p(y = 1 | x)
 
-# since there are many, just print the "most" wrong samples
-minP_whenYis1 = 1
-maxP_whenYis0 = 0
-wrong_positive_review = None
-wrong_negative_review = None
-wrong_positive_prediction = None
-wrong_negative_prediction = None
-for i in range(N):
-    p = P[i]
-    y = Y[i]
-    if y == 1 and p < 0.5:
-        if p < minP_whenYis1:
-            wrong_positive_review = orig_reviews[i]
-            wrong_positive_prediction = preds[i]
-            minP_whenYis1 = p
-    elif y == 0 and p > 0.5:
-        if p > maxP_whenYis0:
-            wrong_negative_review = orig_reviews[i]
-            wrong_negative_prediction = preds[i]
-            maxP_whenYis0 = p
+# # since there are many, just print the "most" wrong samples
+# minP_whenYis1 = 1
+# maxP_whenYis0 = 0
+# wrong_positive_review = None
+# wrong_negative_review = None
+# wrong_positive_prediction = None
+# wrong_negative_prediction = None
+# for i in range(N):
+#     p = P[i]
+#     y = Y[i]
+#     if y == 1 and p < 0.5:
+#         if p < minP_whenYis1:
+#             wrong_positive_review = orig_reviews[i]
+#             wrong_positive_prediction = preds[i]
+#             minP_whenYis1 = p
+#     elif y == 0 and p > 0.5:
+#         if p > maxP_whenYis0:
+#             wrong_negative_review = orig_reviews[i]
+#             wrong_negative_prediction = preds[i]
+#             maxP_whenYis0 = p
 
-print("Most wrong positive review (prob = %s, pred = %s):" % (minP_whenYis1, wrong_positive_prediction))
-print(wrong_positive_review)
-print("Most wrong negative review (prob = %s, pred = %s):" % (maxP_whenYis0, wrong_negative_prediction))
-print(wrong_negative_review)
+# print("Most wrong positive review (prob = %s, pred = %s):" % (minP_whenYis1, wrong_positive_prediction))
+# print(wrong_positive_review)
+# print("Most wrong negative review (prob = %s, pred = %s):" % (maxP_whenYis0, wrong_negative_prediction))
+# print(wrong_negative_review)
 
