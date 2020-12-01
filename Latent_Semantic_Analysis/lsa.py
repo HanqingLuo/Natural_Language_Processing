@@ -8,6 +8,8 @@ from builtins import range
 # Note: you may need to update your version of future
 # sudo pip install -U future
 
+# Dimensionality Reduction
+
 
 import nltk
 import numpy as np
@@ -15,11 +17,13 @@ import matplotlib.pyplot as plt
 from nltk.stem import WordNetLemmatizer
 from sklearn.decomposition import TruncatedSVD
 
-
+# Lemmatisation in linguistics is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form.
 wordnet_lemmatizer = WordNetLemmatizer()
 
+# load up all book titles in an array
 titles = [line.rstrip() for line in open('all_book_titles.txt')]
 
+# a few words we dont wanna see, irrelevants
 # copy tokenizer from sentiment example
 stopwords = set(w.rstrip() for w in open('stopwords.txt'))
 
@@ -75,6 +79,7 @@ if error_count == len(titles):
 
 
 # now let's create our input matrices - just indicator variables for this example - works better than proportions
+# Unsupervised
 def tokens_to_vector(tokens):
     x = np.zeros(len(word_index_map))
     for t in tokens:
@@ -93,7 +98,7 @@ for tokens in all_tokens:
 def main():
     svd = TruncatedSVD()
     Z = svd.fit_transform(X)
-    plt.scatter(Z[:,0], Z[:,1])
+    plt.scatter(Z[:,0], Z[:,1]) # visualize data
     for i in range(D):
         plt.annotate(s=index_word_map[i], xy=(Z[i,0], Z[i,1]))
     plt.show()
